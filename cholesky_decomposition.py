@@ -118,5 +118,3 @@ def cut_matrix(m):
         for j in range(len(res)):
             res[i][j] = m[i][j]
     return res
-
-inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
