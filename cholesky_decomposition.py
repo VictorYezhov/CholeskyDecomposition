@@ -9,6 +9,8 @@ def inverse_finding(A):
     Other algorithms of finding matrix  inverse are taking +-(5/6)N^3
     :param A: Symmetric, positive define matrix A
     :return: Inverse of this matrix using Cholesky Decomposition method
+    >>> inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
+    [[49.3611111111111, -13.555555555555554, 2.1111111111111112], [-13.555555555555554, 3.7777777777777777, -0.55555555555555558], [2.1111111111111112, -0.55555555555555558, 0.1111111111111111]]
     """
 
     help_matrix = find_L(A)
@@ -55,11 +57,6 @@ def inverse_finding(A):
                 s[j][k] = s[j][k]-x[j]*help_matrix[k][i]
         help_matrix = cut_matrix(help_matrix)
 
-
-    for row in inverse:
-        for elem in row:
-            print(elem, end=' ')
-        print()
     return inverse
 
 
@@ -121,3 +118,5 @@ def cut_matrix(m):
         for j in range(len(res)):
             res[i][j] = m[i][j]
     return res
+
+inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
