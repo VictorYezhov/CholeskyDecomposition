@@ -1,6 +1,4 @@
 import numpy as np
-import matrix_generator as mg
-
 
 def inverse_finding(A):
     """
