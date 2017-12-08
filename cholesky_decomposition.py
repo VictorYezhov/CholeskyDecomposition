@@ -1,5 +1,5 @@
 import numpy as np
-
+import matrix_generator as mg
 
 
 def inverse_finding(A):
@@ -18,6 +18,7 @@ def inverse_finding(A):
     if help_matrix is False:
         print("Some error with matrix")
         return False
+
 
     s = [[0 for i in range(len(help_matrix))] for i in range(len(help_matrix))]
     inverse = [[0 for i in range(len(A))] for i in range(len(A))]
@@ -119,4 +120,3 @@ def cut_matrix(m):
             res[i][j] = m[i][j]
     return res
 
-inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
