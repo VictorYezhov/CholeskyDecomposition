@@ -1,5 +1,5 @@
 import numpy as np
-
+import matrix_generator as mg
 def inverse_finding(A):
     """
     This method is made to find Inverse of symmetric and positive define matrix A, using Cholesky Decomposition method
@@ -7,7 +7,7 @@ def inverse_finding(A):
     Other algorithms of finding matrix  inverse are taking +-(5/6)N^3
     :param A: Symmetric, positive define matrix A
     :return: Inverse of this matrix using Cholesky Decomposition method
-    >>> inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
+    # >>> inverse_finding([[4, 12, -16], [12, 37, -43], [-16, -43, 98]])
     [[49.3611111111111, -13.555555555555554, 2.1111111111111112], [-13.555555555555554, 3.7777777777777777, -0.55555555555555558], [2.1111111111111112, -0.55555555555555558, 0.1111111111111111]]
     """
 
@@ -73,6 +73,12 @@ def find_L(A):
             return False
     if A != find_matrix_transpose(A):
         return False
+
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            if A[i] == A[j] and i != j:
+                return False
+
     L = [[0 for i in range(len(A))] for i in range(len(A))]
     for i in range(len(A)):
         for j in range(len(A)):
@@ -118,3 +124,37 @@ def cut_matrix(m):
             res[i][j] = m[i][j]
     return res
 
+
+file_matrix = open("matrixes.txt", 'w')
+file_inverse = open("inverses.txt",'w')
+file_identity_errors = open("errors.txt",'w')
+
+for count in range(1, 6):
+    for k in range(5):
+        file_matrix.write("\n\n")
+        file_inverse.write("\n\n")
+        file_identity_errors.write("\n\n")
+        m = mg.generate(count)
+        inv = inverse_finding(m)
+        error = mg.matrix_multiplication(m, inv)
+        for i in range(len(m)):
+            file_matrix.write("\n")
+            file_inverse.write("\n")
+            file_identity_errors.write("\n")
+            for j in range(len(m[i])):
+                file_matrix.write(str(m[i][j])+" ")
+                file_inverse.write(str(inv[i][j])+" ")
+                file_identity_errors.write(str(error[i][j])+" ")
+
+file_matrix.close()
+file_identity_errors.close()
+file_inverse.close()
+
+
+# for i in range(6):
+#
+#
+# m1 = mg.generate(50)
+# print(m1)
+# m2 = inverse_finding(m1)
+# print(mg.matrix_multiplication(m1,m2))

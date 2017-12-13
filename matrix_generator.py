@@ -1,5 +1,6 @@
 import random
 
+
 def matrix_multiplication(matrix1, matrix2):
     result = [[0 for i in range(len(matrix1))] for i in range(len(matrix2[0]))]
     for i in range(len(result)):
@@ -10,12 +11,14 @@ def matrix_multiplication(matrix1, matrix2):
 
 
 def generate(size):
-    matrix =[[0 for i in range(size*5)] for i in range(size)]
+    print("Generation")
+    matrix =[[0 for i in range(size*random.randint(size,size*size))] for i in range(size)]
     for i in range(len(matrix)):
         for j in range(len(matrix[i])):
             matrix[i][j] = random.randint(1, 9)
     matrix_t = find_matrix_transpose(matrix)
     result = matrix_multiplication(matrix, matrix_t)
+    print("End of generation")
     return result
 
 
