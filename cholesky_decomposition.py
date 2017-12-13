@@ -123,38 +123,3 @@ def cut_matrix(m):
         for j in range(len(res)):
             res[i][j] = m[i][j]
     return res
-
-
-file_matrix = open("matrixes.txt", 'w')
-file_inverse = open("inverses.txt",'w')
-file_identity_errors = open("errors.txt",'w')
-
-for count in range(1, 6):
-    for k in range(5):
-        file_matrix.write("\n\n")
-        file_inverse.write("\n\n")
-        file_identity_errors.write("\n\n")
-        m = mg.generate(count)
-        inv = inverse_finding(m)
-        error = mg.matrix_multiplication(m, inv)
-        for i in range(len(m)):
-            file_matrix.write("\n")
-            file_inverse.write("\n")
-            file_identity_errors.write("\n")
-            for j in range(len(m[i])):
-                file_matrix.write(str(m[i][j])+" ")
-                file_inverse.write(str(inv[i][j])+" ")
-                file_identity_errors.write(str(error[i][j])+" ")
-
-file_matrix.close()
-file_identity_errors.close()
-file_inverse.close()
-
-
-# for i in range(6):
-#
-#
-# m1 = mg.generate(50)
-# print(m1)
-# m2 = inverse_finding(m1)
-# print(mg.matrix_multiplication(m1,m2))

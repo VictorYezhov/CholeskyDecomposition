@@ -11,6 +11,11 @@ def matrix_multiplication(matrix1, matrix2):
 
 
 def generate(size):
+    """
+    Matrix generator
+    :param size:
+    :return:
+    """
     print("Generation")
     matrix =[[0 for i in range(size*random.randint(size,size*size))] for i in range(size)]
     for i in range(len(matrix)):
