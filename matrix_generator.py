@@ -13,8 +13,8 @@ def matrix_multiplication(matrix1, matrix2):
 def generate(size):
     """
     Matrix generator
-    :param size:
-    :return:
+    :param size: int size of matrix, which you want to get
+    :return: simmetric, positive-define matrix
     """
     print("Generation")
     matrix =[[0 for i in range(size*random.randint(size,size*size))] for i in range(size)]
